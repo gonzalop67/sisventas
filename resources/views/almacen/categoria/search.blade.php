@@ -1,4 +1,4 @@
-<form action="almacen/categoria" method="GET" autocomplete="off" role="search">
+<form action="{{route('categoria')}}" method="GET" autocomplete="off" role="search">
     @csrf
     <div class="form-group">
         <div class="input-group">
