@@ -19,9 +19,10 @@ class ProductoController extends Controller
         if ($request) {
             $query = trim($request->get('searchText'));
             $productos = DB::table('producto AS p')
-            ->join('categorias AS c', 'p.idcategoria', '=', 'c.idcategoria')
+            ->join('categoria AS c', 'p.idcategoria', '=', 'c.idcategoria')
             ->select('p.idproducto','p.nombre','p.codigo','p.stock','c.nombre AS categoria','p.descripcion','p.imagen','p.estado')
             ->where('p.nombre', 'LIKE', '%' . $query . '%')
+            ->orwhere('p.codigo', 'LIKE', '%' . $query . '%')
             ->orderBy('p.idproducto', 'desc')
             ->paginate(5);
             return view('almacen.producto.index', ["productos" => $productos, "searchText" => $query]);
