@@ -24,7 +24,7 @@ class ProductoController extends Controller
             ->where('p.nombre', 'LIKE', '%' . $query . '%')
             ->orwhere('p.codigo', 'LIKE', '%' . $query . '%')
             ->orderBy('p.idproducto', 'desc')
-            ->paginate(5);
+            ->paginate(3);
             return view('almacen.producto.index', ["productos" => $productos, "searchText" => $query]);
         }
     }
