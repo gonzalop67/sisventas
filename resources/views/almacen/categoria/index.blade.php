@@ -12,7 +12,7 @@
             <table class="table table-striped table-bordered table-condensed table-hover">
                 <thead>
                     <tr>
-                        <td>Id</td>
+                        <th>Id</th>
                         <th>Nombre</th>
                         <th>Descripción</th>
                         <th>Opciones</th>

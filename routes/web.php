@@ -32,3 +32,11 @@ Route::post('almacen/producto', 'ProductoController@store')->name('guardar_produ
 Route::get('almacen/producto/{id}/edit', 'ProductoController@edit')->name('editar_producto');
 Route::put('almacen/producto/{id}', 'ProductoController@update')->name('actualizar_producto');
 Route::get('almacen/producto/{id}/destroy', 'ProductoController@destroy')->name('eliminar_producto');
+
+//RUTAS CRUD CLIENTES
+Route::get('ventas/cliente', 'ClienteController@index')->name('cliente');
+Route::get('ventas/cliente/create', 'ClienteController@create')->name('crear_cliente');
+Route::post('ventas/cliente', 'ClienteController@store')->name('guardar_cliente');
+Route::get('ventas/cliente/{id}/edit', 'ClienteController@edit')->name('editar_cliente');
+Route::put('ventas/cliente/{id}', 'ClienteController@update')->name('actualizar_cliente');
+Route::get('ventas/cliente/{id}/destroy', 'ClienteController@destroy')->name('eliminar_cliente');
