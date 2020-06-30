@@ -40,3 +40,11 @@ Route::post('ventas/cliente', 'ClienteController@store')->name('guardar_cliente'
 Route::get('ventas/cliente/{id}/edit', 'ClienteController@edit')->name('editar_cliente');
 Route::put('ventas/cliente/{id}', 'ClienteController@update')->name('actualizar_cliente');
 Route::get('ventas/cliente/{id}/destroy', 'ClienteController@destroy')->name('eliminar_cliente');
+
+//RUTAS CRUD PROVEEDORES
+Route::get('compras/proveedor', 'ProveedorController@index')->name('proveedor');
+Route::get('compras/proveedor/create', 'ProveedorController@create')->name('crear_proveedor');
+Route::post('compras/proveedor', 'ProveedorController@store')->name('guardar_proveedor');
+Route::get('compras/proveedor/{id}/edit', 'ProveedorController@edit')->name('editar_proveedor');
+Route::put('compras/proveedor/{id}', 'ProveedorController@update')->name('actualizar_proveedor');
+Route::get('compras/proveedor/{id}/destroy', 'ProveedorController@destroy')->name('eliminar_proveedor');
