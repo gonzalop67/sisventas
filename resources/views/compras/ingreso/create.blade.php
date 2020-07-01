@@ -108,7 +108,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12" id="guardar">
                 <div class="form-group">
                     <button class="btn btn-primary" type="submit">Guardar</button>
                     <button class="btn btn-danger" type="reset">Cancelar</button>
@@ -116,4 +116,70 @@
             </div>
         </div>
     </form>
+
+    @push('scripts')
+    <script>
+        $(document).ready(function(){
+            $("#bt_add").click(function(){
+                agregar();
+            });
+        });
+
+        var cont = 0;
+        total = 0;
+        subtotal = [];
+
+        $("#guardar").hide();
+
+        function agregar()
+        {
+            idproducto = $("#pidproducto").val();
+            producto = $("#pidproducto option:selected").text();
+            cantidad = $("#pcantidad").val();
+            precio_compra = $("#pprecio_compra").val();
+            precio_venta = $("#pprecio_venta").val();
+
+            if (idproducto != "" && cantidad != "" && cantidad > 0 && precio_compra != "" && precio_venta != "")
+            {
+                subtotal[cont] = (cantidad * precio_compra);
+                total = total + subtotal[cont];
+
+                var fila = '<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idproducto[]" value="'+idproducto+'">'+producto+'</td><td><input type="number" name="cantidad[]" value="'+cantidad+'"></td><td><input type="number" name="precio_compra[]" value="'+precio_compra+'"></td><td><input type="number" name="precio_venta[]" value="'+precio_venta+'"></td><td>'+subtotal[cont]+'</td></tr>';
+                cont++;
+                limpiar();
+                $("#total").html("$ " + total);
+                evaluar();
+                $("#detalles").append(fila);
+            }
+            else
+            {
+                alert("Error al ingresar el detalle del ingreso, revise los datos del producto");
+            }
+        }
+
+        function limpiar()
+        {
+            $("#pcantidad").val("");
+            $("#pprecio_compra").val("");
+            $("#pprecio_venta").val("");
+        }
+
+        function evaluar()
+        {
+            if (total > 0) {
+                $("#guardar").show();
+            } else {
+                $("#guardar").hide();
+            }
+        }
+
+        function eliminar(index)
+        {
+            total = total - subtotal[index];
+            $("#total").html("$ " + total);
+            $("#fila" + index).remove();
+            evaluar();
+        }
+    </script>
+    @endpush
 @endsection
