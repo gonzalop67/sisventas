@@ -48,3 +48,11 @@ Route::post('compras/proveedor', 'ProveedorController@store')->name('guardar_pro
 Route::get('compras/proveedor/{id}/edit', 'ProveedorController@edit')->name('editar_proveedor');
 Route::put('compras/proveedor/{id}', 'ProveedorController@update')->name('actualizar_proveedor');
 Route::get('compras/proveedor/{id}/destroy', 'ProveedorController@destroy')->name('eliminar_proveedor');
+
+//RUTAS CRUD INGRESOS
+Route::get('compras/ingreso', 'IngresoController@index')->name('ingreso');
+Route::get('compras/ingreso/create', 'IngresoController@create')->name('crear_ingreso');
+Route::post('compras/ingreso', 'IngresoController@store')->name('guardar_ingreso');
+Route::get('compras/ingreso/{id}/show', 'IngresoController@show')->name('mostrar_ingreso');
+Route::put('compras/ingreso/{id}', 'IngresoController@update')->name('actualizar_ingreso');
+Route::get('compras/ingreso/{id}/destroy', 'IngresoController@destroy')->name('eliminar_ingreso');

@@ -23,10 +23,10 @@ class IngresoController extends Controller
             $ingresos = DB::table('ingreso AS i')
             ->join('persona AS p', 'i.idproveedor', '=', 'p.idpersona')
             ->join('detalle_ingreso AS di', 'i.idingreso', '=', 'di.idingreso')
-            ->select('i.id_ingreso', 'i.fecha_hora', 'p.nombre', 'i.tipo_comprobante', 'i.serie_comprobante', 'i.num_comprobante', 'i.impuesto', 'i.estado', DB::raw('SUM(di.cantidad * precio_compra) AS total'))
+            ->select('i.idingreso', 'i.fecha_hora', 'p.nombre', 'i.tipo_comprobante', 'i.serie_comprobante', 'i.num_comprobante', 'i.impuesto', 'i.estado', DB::raw('SUM(di.cantidad * precio_compra) AS total'))
             ->where('i.num_comprobante', 'LIKE', '%' .$query .'%')
             ->orderBy('i.idingreso', 'desc')
-            ->groupBy('i.id_ingreso', 'i.fecha_hora', 'p.nombre', 'i.tipo_comprobante', 'i.serie_comprobante', 'i.num_comprobante', 'i.impuesto', 'i.estado')
+            ->groupBy('i.idingreso', 'i.fecha_hora', 'p.nombre', 'i.tipo_comprobante', 'i.serie_comprobante', 'i.num_comprobante', 'i.impuesto', 'i.estado')
             ->paginate(7);
             return view('compras.ingreso.index', ["ingresos" => $ingresos, "searchText" => $query]);
         }
@@ -88,8 +88,8 @@ class IngresoController extends Controller
     {
         $ingreso = DB::table('ingreso AS i')
             ->join('persona AS p', 'i.idproveedor', '=', 'p.idpersona')
-            ->join('detalle_ingreso AS di', 'i.id_ingreso', '=', 'di.idingreso')
-            ->select('i.id_ingreso', 'i.fecha_hora', 'p.nombre', 'i.tipo_comprobante', 'i.serie_comprobante', 'i.num_comprobante', 'i.impuesto', 'i.estado', DB::raw('SUM(di.cantidad * precio_compra) AS total'))
+            ->join('detalle_ingreso AS di', 'i.idingreso', '=', 'di.idingreso')
+            ->select('i.idingreso', 'i.fecha_hora', 'p.nombre', 'i.tipo_comprobante', 'i.serie_comprobante', 'i.num_comprobante', 'i.impuesto', 'i.estado', DB::raw('SUM(di.cantidad * precio_compra) AS total'))
             ->where('i.idingreso', '=', $id)
             ->first();
 
