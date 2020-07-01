@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 01, 2020 at 03:09 PM
+-- Generation Time: Jul 01, 2020 at 10:51 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.19
 
@@ -30,6 +30,7 @@ USE `sisventas`;
 -- Table structure for table `categoria`
 --
 
+DROP TABLE IF EXISTS `categoria`;
 CREATE TABLE `categoria` (
   `idcategoria` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
@@ -43,6 +44,7 @@ CREATE TABLE `categoria` (
 -- Table structure for table `detalle_ingreso`
 --
 
+DROP TABLE IF EXISTS `detalle_ingreso`;
 CREATE TABLE `detalle_ingreso` (
   `iddetalle_ingreso` int(11) NOT NULL,
   `idingreso` int(11) NOT NULL,
@@ -55,6 +57,7 @@ CREATE TABLE `detalle_ingreso` (
 --
 -- Triggers `detalle_ingreso`
 --
+DROP TRIGGER IF EXISTS `tr_updStockIngreso`;
 DELIMITER $$
 CREATE TRIGGER `tr_updStockIngreso` AFTER INSERT ON `detalle_ingreso` FOR EACH ROW BEGIN
      UPDATE producto SET stock = stock + NEW.cantidad
@@ -69,13 +72,27 @@ DELIMITER ;
 -- Table structure for table `detalle_venta`
 --
 
+DROP TABLE IF EXISTS `detalle_venta`;
 CREATE TABLE `detalle_venta` (
   `iddetalle_venta` int(11) NOT NULL,
   `idventa` int(11) NOT NULL,
   `idproducto` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
-  `precio_venta` decimal(11,2) NOT NULL
+  `precio_venta` decimal(11,2) NOT NULL,
+  `descuento` decimal(11,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Triggers `detalle_venta`
+--
+DROP TRIGGER IF EXISTS `tr_updStockVenta`;
+DELIMITER $$
+CREATE TRIGGER `tr_updStockVenta` AFTER INSERT ON `detalle_venta` FOR EACH ROW BEGIN
+     UPDATE producto SET stock = stock - NEW.cantidad
+        WHERE producto.idproducto = NEW.idproducto;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -83,6 +100,7 @@ CREATE TABLE `detalle_venta` (
 -- Table structure for table `ingreso`
 --
 
+DROP TABLE IF EXISTS `ingreso`;
 CREATE TABLE `ingreso` (
   `idingreso` int(11) NOT NULL,
   `idproveedor` int(11) NOT NULL,
@@ -100,6 +118,7 @@ CREATE TABLE `ingreso` (
 -- Table structure for table `persona`
 --
 
+DROP TABLE IF EXISTS `persona`;
 CREATE TABLE `persona` (
   `idpersona` int(11) NOT NULL,
   `tipo_persona` varchar(20) NOT NULL,
@@ -117,6 +136,7 @@ CREATE TABLE `persona` (
 -- Table structure for table `producto`
 --
 
+DROP TABLE IF EXISTS `producto`;
 CREATE TABLE `producto` (
   `idproducto` int(11) NOT NULL,
   `idcategoria` int(11) NOT NULL,
@@ -134,6 +154,7 @@ CREATE TABLE `producto` (
 -- Table structure for table `venta`
 --
 
+DROP TABLE IF EXISTS `venta`;
 CREATE TABLE `venta` (
   `idventa` int(11) NOT NULL,
   `idcliente` int(11) NOT NULL,
