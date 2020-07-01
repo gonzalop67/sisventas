@@ -46,7 +46,7 @@ class IngresoController extends Controller
     {
         try {
             DB::beginTransaction();
-            
+
             $ingreso = new Ingreso();
             $ingreso->idproveedor = $request->get('idproveedor');
             $ingreso->tipo_comprobante = $request->get('tipo_comprobante');
@@ -91,6 +91,7 @@ class IngresoController extends Controller
             ->join('detalle_ingreso AS di', 'i.idingreso', '=', 'di.idingreso')
             ->select('i.idingreso', 'i.fecha_hora', 'p.nombre', 'i.tipo_comprobante', 'i.serie_comprobante', 'i.num_comprobante', 'i.impuesto', 'i.estado', DB::raw('SUM(di.cantidad * precio_compra) AS total'))
             ->where('i.idingreso', '=', $id)
+            ->groupBy('i.idingreso', 'i.fecha_hora', 'p.nombre', 'i.tipo_comprobante', 'i.serie_comprobante', 'i.num_comprobante', 'i.impuesto', 'i.estado')
             ->first();
 
         $detalles = DB::table('detalle_ingreso AS d')
