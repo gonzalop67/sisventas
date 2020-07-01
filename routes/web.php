@@ -56,3 +56,11 @@ Route::post('compras/ingreso', 'IngresoController@store')->name('guardar_ingreso
 Route::get('compras/ingreso/{id}/show', 'IngresoController@show')->name('mostrar_ingreso');
 Route::put('compras/ingreso/{id}', 'IngresoController@update')->name('actualizar_ingreso');
 Route::get('compras/ingreso/{id}/destroy', 'IngresoController@destroy')->name('eliminar_ingreso');
+
+//RUTAS CRUD VENTAS
+Route::get('ventas/venta', 'VentaController@index')->name('venta');
+Route::get('ventas/venta/create', 'VentaController@create')->name('crear_venta');
+Route::post('ventas/venta', 'VentaController@store')->name('guardar_venta');
+Route::get('ventas/venta/{id}/show', 'VentaController@show')->name('mostrar_venta');
+Route::put('ventas/venta/{id}', 'VentaController@update')->name('actualizar_venta');
+Route::get('ventas/venta/{id}/destroy', 'VentaController@destroy')->name('eliminar_venta');
