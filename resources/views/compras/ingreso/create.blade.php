@@ -2,7 +2,7 @@
 @section('contenido')
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <h3>Nuevo Proveedor</h3>
+            <h3>Nuevo Ingreso</h3>
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <ul>
@@ -14,47 +14,46 @@
             @endif
         </div>
     </div>
-    <form action="{{route('guardar_proveedor')}}" method="POST" autocomplete="off">
+    <form action="{{route('guardar_ingreso')}}" method="POST" autocomplete="off">
         @csrf
         <div class="row">
-            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                 <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" required value="{{old('nombre')}}" class="form-control" placeholder="Nombre...">
-                </div>
-            </div>
-            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                <div class="form-group">
-                    <label for="direccion">Dirección</label>
-                    <input type="text" name="direccion" value="{{old('direccion')}}" class="form-control" placeholder="Dirección...">
-                </div>
-            </div>
-            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                <div class="form-group">
-                    <label for="">Documento</label>
-                    <select name="tipo_documento" class="form-control">
-                        <option value="DNI">DNI</option>
-                        <option value="RUC">RUC</option>
-                        <option value="PAS">PAS</option>
+                    <label for="proveedor">Proveedor</label>
+                    <select name="idproveedor" id="idproveedor" class="form-control">
+                        @foreach ($personas as $persona)
+                            <option value="{{$persona->idpersona}}">{{$persona->nombre}}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                 <div class="form-group">
-                    <label for="num_documento">Número Documento</label>
-                    <input type="text" name="num_documento" value="{{old('num_documento')}}" class="form-control" placeholder="Número de Documento...">
+                    <label for="">Tipo Comprobante</label>
+                    <select name="tipo_comprobante" class="form-control">
+                        <option value="Boleta">Boleta</option>
+                        <option value="Factura">Factura</option>
+                        <option value="Ticket">Ticket</option>
+                    </select>
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                 <div class="form-group">
-                    <label for="telefono">Teléfono</label>
-                    <input type="text" name="telefono" value="{{old('telefono')}}" class="form-control" placeholder="Teléfono...">
+                    <label for="serie_comprobante">Serie Comprobante</label>
+                    <input type="text" name="serie_comprobante" value="{{old('serie_comprobante')}}" class="form-control" placeholder="Serie comprobante...">
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" value="{{old('email')}}" class="form-control" placeholder="Email...">
+                    <label for="num_comprobante">Número Comprobante</label>
+                    <input type="text" name="num_comprobante" required value="{{old('num_comprobante')}}" class="form-control" placeholder="Número comprobante...">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-body">
+
                 </div>
             </div>
             <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
