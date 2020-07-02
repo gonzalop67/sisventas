@@ -76,4 +76,5 @@ Route::get('seguridad/usuario/{id}/destroy', 'UsuarioController@destroy')->name(
 Auth::routes();
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/{slug?}', 'HomeController@index');
 //Route::get('/home', 'HomeController@index')->name('home');
