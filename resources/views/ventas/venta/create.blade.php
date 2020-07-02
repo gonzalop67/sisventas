@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                 <div class="form-group">
-                    <label for="cliente">Proveedor</label>
+                    <label for="cliente">Cliente</label>
                     <select name="idcliente" id="idcliente" class="form-control selectpicker" data-live-search="true">
                         @foreach ($personas as $persona)
                             <option value="{{$persona->idpersona}}">{{$persona->nombre}}</option>
