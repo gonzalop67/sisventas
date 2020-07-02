@@ -28,7 +28,7 @@
         <!-- Logo -->
         <a href="index2.html" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>SV</b>V</span>
+          <span class="logo-mini"><b>S</b>V</span>
           <!-- logo for regular state and mobile devices -->
           <span class="logo-lg"><b>SisVentas</b></span>
         </a>
@@ -48,7 +48,7 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <small class="bg-red">Online</small>
-                  <span class="hidden-xs">Juan Carlos Arcila Díaz</span>
+                  <span class="hidden-xs">Micro Store Mi Veci</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
@@ -64,7 +64,7 @@
                   <li class="user-footer">
 
                     <div class="pull-right">
-                      <a href="{{route('logout')}}" class="btn btn-default btn-flat">Cerrar</a>
+                      <a href="{{route('logout')}}" class="btn btn-default btn-flat">Salir</a>
                     </div>
                   </li>
                 </ul>
