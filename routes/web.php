@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 //RUTAS CRUD CATEGORIAS
@@ -64,3 +64,7 @@ Route::post('ventas/venta', 'VentaController@store')->name('guardar_venta');
 Route::get('ventas/venta/{id}/show', 'VentaController@show')->name('mostrar_venta');
 Route::put('ventas/venta/{id}', 'VentaController@update')->name('actualizar_venta');
 Route::get('ventas/venta/{id}/destroy', 'VentaController@destroy')->name('eliminar_venta');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
