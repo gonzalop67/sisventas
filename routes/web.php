@@ -65,6 +65,14 @@ Route::get('ventas/venta/{id}/show', 'VentaController@show')->name('mostrar_vent
 Route::put('ventas/venta/{id}', 'VentaController@update')->name('actualizar_venta');
 Route::get('ventas/venta/{id}/destroy', 'VentaController@destroy')->name('eliminar_venta');
 
+//RUTAS CRUD USUARIOS
+Route::get('seguridad/usuario', 'UsuarioController@index')->name('usuario');
+Route::get('seguridad/usuario/create', 'UsuarioController@create')->name('crear_usuario');
+Route::post('seguridad/usuario', 'UsuarioController@store')->name('guardar_usuario');
+Route::get('seguridad/usuario/{id}/edit', 'UsuarioController@edit')->name('editar_usuario');
+Route::put('seguridad/usuario/{id}', 'UsuarioController@update')->name('actualizar_usuario');
+Route::get('seguridad/usuario/{id}/destroy', 'UsuarioController@destroy')->name('eliminar_usuario');
+
 Auth::routes();
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
