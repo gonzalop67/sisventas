@@ -27,7 +27,6 @@
                             <td>{{ $ingreso->nombre }}</td>
                             <td>{{ $ingreso->tipo_comprobante.': '.$ingreso->serie_comprobante.'-'.$ingreso->num_comprobante }}</td>
                             <td>{{ $ingreso->impuesto }}</td>
-                            <td>{{ $ingreso->total }}</td>
                             <td>{{ $ingreso->estado }}</td>
                             <td>
                                 <a href="{{route('mostrar_ingreso', ['id' => $ingreso->idingreso])}}"><button class="btn btn-primary">Detalles</button></a>
